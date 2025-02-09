@@ -1,0 +1,30 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+      {
+        "name": "Debug on Pico",
+        "type": "cortex-debug",
+        "servertype": "openocd",
+        "serverpath": "${env:HOME}/.pico-sdk/openocd/0.12.0+dev/openocd",
+        "serverArgs": [
+            "-s",
+            "${env:HOME}/.pico-sdk/openocd/0.12.0+dev/scripts",
+        ],
+        "request": "launch",
+        "runToEntryPoint": "main.main",
+        "executable": "${workspaceRoot}/out.elf",
+        "configFiles": [
+            "interface/cmsis-dap.cfg",
+            "target/rp2040.cfg"
+        ],
+        "openOCDLaunchCommands": ["adapter speed 5000"],
+        "preLaunchTask": "build pico",
+        "showDevDebugOutput": "parsed",
+        "cwd": "${workspaceRoot}",
+        "gdbPath": "/usr/bin/gdb",
+        // this had to be specified on linux otherwise the error dumps from OpenOCD did not work properly
+        "objdumpPath": "/usr/bin/objdump",
+        "svdFile": "${env:HOME}/.pico-sdk/sdk/2.1.0/src/rp2040/hardware_regs/RP2040.svd"
+      }
+    ]
+  }

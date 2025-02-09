@@ -1,0 +1,14 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "build pico",
+      "type": "shell",
+      "command": "tinygo build -o out.elf -target pico-w -size short -opt 1 main.go",
+      "group": {
+        "kind": "build",
+        "isDefault": true
+      }
+    }
+  ]
+}
